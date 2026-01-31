@@ -1,0 +1,17 @@
+# Default configuration for orgctl
+# https://huggins.dev/orgctl
+
+path: "~/orgfiles/"
+default-title: "untitled"
+filename-template: "{{.ID}}-{{slugify .Title}}"
+content-template: ""
+
+subgroup:
+  journal:
+    path: "journal/"
+    default-title: '{{now.Format "2006"}}-{{now.Format "01"}}-{{now.Format "02"}}'
+    filename-template: '{{now.Format "2006"}}/{{now.Format "01"}}/{{now.Format "02"}}'
+    content-template: ""
+
+tools:
+  editor: ""
