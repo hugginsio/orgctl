@@ -10,17 +10,16 @@ import (
 	"github.com/hugginsio/orgctl/config"
 )
 
-func DetermineGroup(cfg *config.Configuration, name string) (*config.Group, error) {
-	if name == "" {
-		return &cfg.Group, nil
+func DetermineGroup(cfg *config.Configuration, args []string) (*config.Collection, error) {
+	if len(args) < 1 || args[0] == "" {
+		return &cfg.Collection, nil
 	}
 
 	// TODO: match on shortest unique prefix as well
 
-	candidate := strings.ToLower(name)
-	if subgroup, ok := cfg.Subgroup[candidate]; ok {
-		return &subgroup, nil
+	if group, ok := cfg.Group[strings.ToLower(args[0])]; ok {
+		return &group, nil
 	}
 
-	return nil, fmt.Errorf("Unknown subgroup '%s'", name)
+	return nil, fmt.Errorf("Unknown group '%s'", args[0])
 }

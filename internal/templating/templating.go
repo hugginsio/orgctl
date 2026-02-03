@@ -33,13 +33,13 @@ import (
 // Execute processes a template string with the given context.
 // The context can be any type that supports field access (usually a struct).
 func Execute(tmplStr string, ctx any) (string, error) {
-	funcMap := sprig.FuncMap()
+	funcMap := sprig.TxtFuncMap()
 
 	// Add custom functions
 	funcMap["slugify"] = Slugify
 
 	// Create and parse the template
-	t, err := template.New("template").Funcs(funcMap).Parse(tmplStr)
+	t, err := template.New("").Funcs(funcMap).Parse(tmplStr)
 	if err != nil {
 		return "", fmt.Errorf("failed to parse template: %w", err)
 	}

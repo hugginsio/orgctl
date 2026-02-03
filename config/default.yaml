@@ -6,12 +6,14 @@ default-title: "untitled"
 filename-template: "{{.ID}}-{{slugify .Title}}"
 content-template: ""
 
-subgroup:
+group:
   journal:
     path: "journal/"
-    default-title: '{{now.Format "2006"}}-{{now.Format "01"}}-{{now.Format "02"}}'
-    filename-template: '{{now.Format "2006"}}/{{now.Format "01"}}/{{now.Format "02"}}'
-    content-template: ""
+    default-title: '{{now | date "2006"}}-{{now | date "01"}}-{{now | date "02"}}'
+    filename-template: '{{now | date "2006"}}/{{now | date "01"}}/{{now | date "02"}}'
+    content-template: |
+      #+title: {{now | date "2006"}}-{{now | date "01"}}-{{now | date "02"}}
+      #+filetags: :journal:
 
 tools:
   editor: ""

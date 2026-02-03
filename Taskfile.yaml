@@ -9,6 +9,7 @@ tasks:
     cmd: "go test -bench . ./..."
   cli:
     desc: run the CLI
+    # NOTE: running the execute-template command this way will not work right, as Task will attempt to render the template
     cmd: "go run . {{.CLI_ARGS}}"
     env:
       DEVEL: true

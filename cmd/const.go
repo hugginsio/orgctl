@@ -3,4 +3,5 @@
 
 package cmd
 
+const FlagId = "id"
 const FlagTitle = "title"

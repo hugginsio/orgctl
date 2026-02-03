@@ -7,9 +7,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	"path/filepath"
 
-	"github.com/adrg/xdg"
 	goversion "github.com/caarlos0/go-version"
 	"github.com/charmbracelet/fang"
 	"github.com/hugginsio/orgctl/config"
@@ -22,11 +20,13 @@ var rootCmd = &cobra.Command{
 	Use:   "orgctl",
 	Short: "High velocity note taking with org-mode",
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
-		path := filepath.Join(xdg.ConfigHome, "orgctl", "config.yaml")
+		if cmd.Name() == "init" {
+			return nil
+		}
 
-		loadedCfg, err := config.Load(path)
+		loadedCfg, err := config.Open()
 		if err != nil {
-			return fmt.Errorf("failed to load config: %w", err)
+			return fmt.Errorf("Failed to load config: %w. Try running orgctl init", err)
 		}
 
 		cfg = loadedCfg
