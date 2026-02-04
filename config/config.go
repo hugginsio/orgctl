@@ -6,8 +6,9 @@ package config
 // Configuration for a collection of org-mode documents.
 type Configuration struct {
 	Collection `yaml:",inline"`      // Group defines a single collection of org-mode documents.
-	Group      map[string]Collection `yaml:"group"` // Groups are named collections of org-mode documents within the greater collection.
-	Tools      Tools                 `yaml:"tools"` // Tools configures the companion editor.
+	Provider   string                `yaml:"provider"` // The document metadata provider.
+	Group      map[string]Collection `yaml:"group"`    // Groups are named collections of org-mode documents within the greater collection.
+	Tools      Tools                 `yaml:"tools"`    // Tools configures the companion editor.
 }
 
 // Collection defines a single group of org-mode documents and their configuration.

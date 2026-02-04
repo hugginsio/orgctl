@@ -6,6 +6,8 @@ default-title: "untitled"
 filename-template: "{{.ID}}-{{slugify .Title}}"
 content-template: ""
 
+provider: "org"
+
 group:
   journal:
     path: "journal/"
