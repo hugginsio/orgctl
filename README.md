@@ -11,5 +11,5 @@ TBA
 While in v0, `orgctl` must be installed using the Go toolchain:
 
 ```sh
-go install github.com/hugginsio/orgctl@main
+go install github.com/hugginsio/orgctl
 ```
